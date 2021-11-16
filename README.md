@@ -52,4 +52,26 @@ employees.remove(at: x) // x번째 인덱스의 employee 제거
 employees.remove(x) // 명확하지 않다... x를 지우는건지 x 번째 위치의 값을 지우라는건지..?
 ```
 
-### 
+#### 불필요한 단어들을 생략하라
+
+- 이름안에 모든 단어는 사용되는 시점에 중요한 정보를 전달해야 합니다.
+
+###### Bad
+
+```swift
+public mutating func removeElement(_ member: Element) -> Element?
+
+allViews.removeElement(cancelButton)
+```
+
+위의 경우에는 `Element` 라는 단어를 사용했지만 저 단어가 없어도 명확하게 의미를 이해할 수 있습니다. 이 API를 다시 디자인해보면
+
+###### Good
+
+```swift
+public mutating func remove(_ member: Element) -> Element?
+
+allViews.remove(cancelButton) // clearer
+```
+
+경우에 따라 모호함을 피하기 위해 타입 정보를 반복하는 것은 필요하지만, 일반적으로 그것의 타입보다는 파라미터의 역할을 설명하는 단어를 사용하는게 더 좋습니다.
