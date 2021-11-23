@@ -75,3 +75,66 @@ allViews.remove(cancelButton) // clearer
 ```
 
 경우에 따라 모호함을 피하기 위해 타입 정보를 반복하는 것은 필요하지만, 일반적으로 그것의 타입보다는 파라미터의 역할을 설명하는 단어를 사용하는게 더 좋습니다.
+
+### 타입 제약 조건 대신 역할에 따라 변수, 파라미터, 그리고 연관 타입(associatedtype)의 이름을 지어라
+
+###### 여기서 잠깐! Associated Type이 머죠?
+
+> [Associated Type](https://g4eng.github.io/ios/26) 을 읽어보시면 이해할 수 있으실 겁니다!
+
+###### Bad
+
+```swift
+var string = "Hello"
+protocol ViewController {
+  associatedtype ViewType : View
+}
+class ProductionLine {
+  func restock(from widgetFactory: WidgetFactory)
+}
+```
+
+이런 식으로 타입 이름을 정의하면 명확하게 표현하는 것이 어려워지니, 엔티티의 역할을 표현하는 이름을 지어라
+
+###### Good
+
+```swift
+var greeting = "Hello"
+protocol ViewController {
+  associatedtype ContentView : View
+}
+class ProductionLine {
+  func restock(from supplier: WidgetFactory)
+}
+```
+
+만약 연관 타입이 프로토콜 제약에 강하게 연결되어 있어서 프로토콜 이름 자체가 역할을 표현한다면, 충돌을 피하기 위해 프로토콜 이름 마지막에 `Protocol` 을 붙여주자
+
+```swift
+protocol Sequence {
+  associatedtype Iterator : IteratorProtocol
+}
+protocol IteratorProtocol { ... }
+```
+
+### 파라미터의 역할을 명확하게 드러내기 위해 weak type information 을 보충하시오
+
+- 특히 파라미터 타입이 `NSObject`, `Any`, ` AnyObject`, 혹은 `Int`, `String` 같은 기본 타입일 때, 타입 정보와 사용하는 시점의 문맥이 의도를 완전히 전달하지 못할 수 있다. 아래의 예시를 보면, 정의는 명확하게 되어 있지만, 사용하는 곳에서는 메소드의 의도가 애매하다.
+
+###### Bad
+
+```swift
+func add(_ observer: NSObject, for keyPath: String)
+
+grid.add(self, for: graphics) // vague
+```
+
+명확하게 하려면, 그것의 역할이 명사로 설명되는 weakly typed parameter를 각각 명시해주세요.
+
+###### Good
+
+```swift
+func addObserver(_ observer: NSObject, forKeyPath path: String)
+grid.addObserver(self, forKeyPath: graphics) // 명확함
+```
+
