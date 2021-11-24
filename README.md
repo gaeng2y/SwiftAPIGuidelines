@@ -76,7 +76,7 @@ allViews.remove(cancelButton) // clearer
 
 경우에 따라 모호함을 피하기 위해 타입 정보를 반복하는 것은 필요하지만, 일반적으로 그것의 타입보다는 파라미터의 역할을 설명하는 단어를 사용하는게 더 좋습니다.
 
-### 타입 제약 조건 대신 역할에 따라 변수, 파라미터, 그리고 연관 타입(associatedtype)의 이름을 지어라
+#### 타입 제약 조건 대신 역할에 따라 변수, 파라미터, 그리고 연관 타입(associatedtype)의 이름을 지어라
 
 ###### 여기서 잠깐! Associated Type이 머죠?
 
@@ -117,7 +117,7 @@ protocol Sequence {
 protocol IteratorProtocol { ... }
 ```
 
-### 파라미터의 역할을 명확하게 드러내기 위해 weak type information 을 보충하시오
+#### 파라미터의 역할을 명확하게 드러내기 위해 weak type information 을 보충하시오
 
 - 특히 파라미터 타입이 `NSObject`, `Any`, ` AnyObject`, 혹은 `Int`, `String` 같은 기본 타입일 때, 타입 정보와 사용하는 시점의 문맥이 의도를 완전히 전달하지 못할 수 있다. 아래의 예시를 보면, 정의는 명확하게 되어 있지만, 사용하는 곳에서는 메소드의 의도가 애매하다.
 
@@ -136,5 +136,67 @@ grid.add(self, for: graphics) // vague
 ```swift
 func addObserver(_ observer: NSObject, forKeyPath path: String)
 grid.addObserver(self, forKeyPath: graphics) // 명확함
+```
+
+### Strive for Fluent Usage
+
+#### 메소드와 함수 이름을 영어 문장처럼 사용할 수 있도록 하세요
+
+###### Good
+
+```swift
+x.insert(y, at: z)          “x, insert y at z”
+x.subViews(havingColor: y)  “x's subviews having color y”
+x.capitalizingNouns()       “x, capitalizing nouns”
+```
+
+###### Bad
+
+```swift
+x.insert(y, position: z)
+x.subViews(color: y
+x.nounCapitalize()
+```
+
+첫번째 또는 두개의 인자 이후에 중요한 인자가 아닌 경우에는 문장적 어색함이 있는 것이 허용됩니다
+
+```swift
+AudioUnit.instantiate(
+  with: description, 
+  options: [.inProcess], completionHandler: stopProgressBar)
+```
+
+#### factory methods의 시작은 `make` 로 시작하세요
+
+- e.g  `x.makeIterator()`
+
+#### initializer와 factory method의 호출에서 첫번째 인자의 기본 이름으로 구절을 구성하지 마세요
+
+- e.g `x.makeWidget(cogCount: 47)`
+
+- 예를 들어, 이러한 호출에 대한 첫번째 인자는 기본 이름과 동일한 구문의 일부로 읽혀서는 안됩니다.
+
+###### Good
+
+```swift
+let foreground = Color(red: 32, green: 64, blue: 128)
+let newPart = factory.makeWidget(gears: 42, spindles: 14)
+let ref = Link(target: destination)
+```
+
+다음은 API 작성자가 첫번째 인자로 문법적 연속성을 만들기 위해 노력했지만...
+
+###### Bad
+
+```swift
+let foreground = Color(havingRGBValuesRed: 32, green: 64, andBlue: 128)
+let newPart = factory.makeWidget(havingGearCount: 42, andSpindleCount: 14)
+let ref = Link(to: destination)
+```
+
+실제로, argument labels에 대한 가이드라인에 따르면, 첫번째 인자는 label을 갖게 된다. (값이 보존되는 타입 변환인 경우는 제외(아래에 있는 예))
+
+```swift
+let rgbForeground = RGBColor(cmykForeground)
 ```
 
