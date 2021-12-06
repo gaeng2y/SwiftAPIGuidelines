@@ -223,7 +223,7 @@ let rgbForeground = RGBColor(cmykForeground)
 |`x = y.union(z)`|`y.formUnion(z)`|
 |`j = c.successor(i)`|`c.formSuccessor(&i)`|
 
-### nonmutating인 Boolean 메소드 & 프로퍼티는 receiver에 대한 주장으로 읽혀야 한다 (먼말이지...?)
+### nonmutating 한 변수나 메소드는 호출되는 객체에 대한 주장문처럼 읽혀야 한다
 eg. `x.isEmpty`, `line1.intersects(line2)`
 
 ### 기능을 설명하는 프로토콜은 able, ible, ing를 사용하는 접미사를 붙여서 이름을 지어야한다
