@@ -6,9 +6,9 @@ iOS Developer 오픈 카톡을 보다가 어떤 한 분이 [Swift API Design Gui
 
 앞으로는 최신 기술 / 지식만 쌓는게 아니라 어떻게 해야 더 좋은 코드가 될지 고민하고 또 고민하는 개발자가 되어야겠다고 생각하며 공부했던 내용을 정리해보겠습니다...
 
-### 🛠 Fundamentals
-
+## 🛠 Fundamentals
 우선 Swift API Design Guidelines 에 있는 내용을 토대로 정리해보겠습니다...
+---
 
 > - **Clarity at the point of use** is your most important goal. Entities such as methods and properties are declared only once but *used* repeatedly. Design APIs to make those uses clear and concise. When evaluating a design, reading a declaration is seldom sufficient; always examine a use case to make sure it looks clear in context.
 > - **Clarity is more important than brevity.** Although Swift code can be compact, it is a *non-goal* to enable the smallest possible code with the fewest characters. Brevity in Swift code, where it occurs, is a side-effect of the strong type system and features that naturally reduce boilerplate.
@@ -27,7 +27,7 @@ iOS Developer 오픈 카톡을 보다가 어떤 한 분이 [Swift API Design Gui
 
 정리해보면 저는 코드가 간결해야 좋은 코드라고 생각했는데 Fundamentals만 읽었는데도 제 생각이 틀렸다고 생각되네요.. 저 혼자 만들고 평생 유지보수하는 앱에서는 뭐 간결하고 저 혼자만 읽을 수 있는 코드여도 되겠지만? 어쨌든 다른 사람도 읽게 되고 이해를 해야하는 코드에는 꼭 간결하게보다는 명확하게 코드를 작성하고 주석을 달아주는게 좋을 것 같습니다.
 
-### 🧹 Promote Clear Usage
+### 🎪 Promote Clear Usage
 
 - 여기서부터는 그냥 제가 해석한 내용을 적도록 해보겠습니다
 
