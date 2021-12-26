@@ -117,7 +117,7 @@ protocol Sequence {
 protocol IteratorProtocol { ... }
 ```
 
-#### 파라미터의 역할을 명확하게 드러내기 위해 weak type information 을 보충하시오
+#### 파라미터의 역할을 명확하게 드러내기 위해 불충분한 type 정보를 보충하
 
 - 특히 파라미터 타입이 `NSObject`, `Any`, ` AnyObject`, 혹은 `Int`, `String` 같은 기본 타입일 때, 타입 정보와 사용하는 시점의 문맥이 의도를 완전히 전달하지 못할 수 있다. 아래의 예시를 보면, 정의는 명확하게 되어 있지만, 사용하는 곳에서는 메소드의 의도가 애매하다.
 
@@ -138,7 +138,9 @@ func addObserver(_ observer: NSObject, forKeyPath path: String)
 grid.addObserver(self, forKeyPath: graphics) // 명확함
 ```
 
-### 🗣 Strive for Fluent Usage
+## 🗣 Strive for Fluent Usage
+- 유창한 사용을 위해 노력하세요
+---
 
 #### 메소드와 함수 이름을 영어 문장처럼 사용할 수 있도록 하세요
 
@@ -231,3 +233,7 @@ eg. `x.isEmpty`, `line1.intersects(line2)`
 eg. `Equatable`, `ProgressReporting`
 
 ### 나머지 타입, 프로퍼티, 변수, 정수는 명사로 읽혀야 한다!
+
+## ✔️ Use Terminology Well
+- 용어를 제대로 사용하세요
+---
