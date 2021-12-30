@@ -103,3 +103,46 @@ final class MyNotificationCenter {
 
 let center = MyNotificationCenter()
 // center.add(self, for: "myKey") // for 에 머가 들어가야할지 헷갈림
+
+//struct List {
+//    func makeIterator() -> IteratorProtcol {
+//        Iterator(self)
+//    }
+//}
+//
+//struct Color {
+//    init(havingRed red: Int, green: Int, and blue: Int) {
+//
+//    }
+//
+//    func makeWidght(gears: Int, spindles: Int) -> Widget {
+//        Widget()
+//    }
+//}
+//
+//struct Link {
+//    init(target: Destination) {
+//
+//    }
+//}
+//
+//struct RGBColor {
+//    init(_ cmykColor: CMYKColor) {
+//
+//    }
+//}
+
+// mutating -> 인스턴스 내부의 프로퍼티의 값을 변경하는 것 / nonmutating -> 인스턴스 내부의 프로퍼티 값을 변경하지는 않고 변경한 내용을 새로운 결과값으로 리턴
+
+var unsortedArray = [5, 1, 3, 4]
+
+unsortedArray.sorted() // nonmutating
+unsortedArray.sort() // mutating
+
+struct Distance {
+    func distance(to otherDistance: Distance) -> Int {
+        return self.value - otherDistance.value
+    }
+    
+    
+}
