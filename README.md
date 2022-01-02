@@ -35,7 +35,7 @@ iOS Developer 오픈 카톡을 보다가 어떤 한 분이 [Swift API Design Gui
 
 - 코드를 읽는 사람들을 위해 모호지 않도록 하기 위해!
 
-###### Good
+##### Good
 
 ```Swift
 extension List {
@@ -46,7 +46,7 @@ employees.remove(at: x) // x번째 인덱스의 employee 제거
 
 만약 Method signature에서 `at` 을 생략하면 `x`가 제거할 element의 position(index)가 아닌, x의 값을 가지는 element를 제거하는 메소드로 생각할 수 있다...
 
-###### Bad
+##### Bad
 
 ```Swift
 employees.remove(x) // 명확하지 않다... x를 지우는건지 x 번째 위치의 값을 지우라는건지..?
@@ -56,7 +56,7 @@ employees.remove(x) // 명확하지 않다... x를 지우는건지 x 번째 위�
 
 - 이름안에 모든 단어는 사용되는 시점에 중요한 정보를 전달해야 합니다.
 
-###### Bad
+##### Bad
 
 ```swift
 public mutating func removeElement(_ member: Element) -> Element?
@@ -66,7 +66,7 @@ allViews.removeElement(cancelButton)
 
 위의 경우에는 `Element` 라는 단어를 사용했지만 저 단어가 없어도 명확하게 의미를 이해할 수 있습니다. 이 API를 다시 디자인해보면
 
-###### Good
+##### Good
 
 ```swift
 public mutating func remove(_ member: Element) -> Element?
@@ -78,11 +78,11 @@ allViews.remove(cancelButton) // clearer
 
 #### 타입 제약 조건 대신 역할에 따라 변수, 파라미터, 그리고 연관 타입(associatedtype)의 이름을 지어라
 
-###### 여기서 잠깐! Associated Type이 머죠?
+##### 여기서 잠깐! Associated Type이 머죠?
 
 > [Associated Type](https://g4eng.github.io/ios/26) 을 읽어보시면 이해할 수 있으실 겁니다!
 
-###### Bad
+##### Bad
 
 ```swift
 var string = "Hello"
@@ -96,7 +96,7 @@ class ProductionLine {
 
 이런 식으로 타입 이름을 정의하면 명확하게 표현하는 것이 어려워지니, 엔티티의 역할을 표현하는 이름을 지어라
 
-###### Good
+##### Good
 
 ```swift
 var greeting = "Hello"
@@ -121,7 +121,7 @@ protocol IteratorProtocol { ... }
 
 - 특히 파라미터 타입이 `NSObject`, `Any`, ` AnyObject`, 혹은 `Int`, `String` 같은 기본 타입일 때, 타입 정보와 사용하는 시점의 문맥이 의도를 완전히 전달하지 못할 수 있다. 아래의 예시를 보면, 정의는 명확하게 되어 있지만, 사용하는 곳에서는 메소드의 의도가 애매하다.
 
-###### Bad
+##### Bad
 
 ```swift
 func add(_ observer: NSObject, for keyPath: String)
@@ -131,7 +131,7 @@ grid.add(self, for: graphics) // vague
 
 명확하게 하려면, 그것의 역할이 명사로 설명되는 weakly typed parameter를 각각 명시해주세요.
 
-###### Good
+##### Good
 
 ```swift
 func addObserver(_ observer: NSObject, forKeyPath path: String)
@@ -144,7 +144,7 @@ grid.addObserver(self, forKeyPath: graphics) // 명확함
 
 #### 메소드와 함수 이름을 영어 문장처럼 사용할 수 있도록 하세요
 
-###### Good
+##### Good
 
 ```swift
 x.insert(y, at: z)          “x, insert y at z”
@@ -152,7 +152,7 @@ x.subViews(havingColor: y)  “x's subviews having color y”
 x.capitalizingNouns()       “x, capitalizing nouns”
 ```
 
-###### Bad
+##### Bad
 
 ```swift
 x.insert(y, position: z)
@@ -178,7 +178,7 @@ AudioUnit.instantiate(
 
 - 예를 들어, 이러한 호출에 대한 첫번째 인자는 기본 이름과 동일한 구문의 일부로 읽혀서는 안됩니다.
 
-###### Good
+##### Good
 
 ```swift
 let foreground = Color(red: 32, green: 64, blue: 128)
@@ -188,7 +188,7 @@ let ref = Link(target: destination)
 
 다음은 API 작성자가 첫번째 인자로 문법적 연속성을 만들기 위해 노력했지만...
 
-###### Bad
+##### Bad
 
 ```swift
 let foreground = Color(havingRGBValuesRed: 32, green: 64, andBlue: 128)
@@ -289,7 +289,7 @@ var enjoysScubaDiving = true
 
 ### 기본 뜻이 같거나 구별되는 서로 구별되는 도메인에서 작동하는 메소드는 base name을 동일하게 사용할 수 있습니다.
 
-###### Good
+##### Good
 
 에를 들어, 아래 예시에서 기본적으로 같은 동작을 하기 때문에 같은 이름을 사용하는 것이 권장됩니다.
 ```swift
@@ -314,7 +314,7 @@ extension Collection where Element : Equatable {
 }
 ```
 
-###### Bad
+##### Bad
 
 아래의 `index 메소드는 다른 의미를 가지고 있기 때문에, 다르게 네이밍 되어야 한다.
 ```swift
