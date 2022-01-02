@@ -143,6 +143,79 @@ struct Distance {
     func distance(to otherDistance: Distance) -> Int {
         return self.value - otherDistance.value
     }
-    
-    
 }
+
+var numberOfEmployees: Int {
+    var result: Int = 0
+    
+    (0 ... n).forEach {
+        (0 ... n).forEach {
+            (0 ... n).forEach {
+                result += 1
+            }
+        }
+    }
+    
+    return result
+}
+
+class Company {
+    
+    /// Time Completxity: O(n^3)
+    var numberOfEmployees: Int {
+        var result: Int = 0
+        
+        (0 ... n).forEach {
+            (0 ... n).forEach {
+                (0 ... n).forEach {
+                    result += 1
+                }
+            }
+        }
+        
+        return result
+    }
+}
+
+var utf8Bytes: [UTF8.CodeUnit]
+var isRepresentableAsASCII = true
+//var userSMTPServer: SecureSMTPServer
+
+var websiteURL: URL?
+var urlString: String?
+
+struct Shape {
+    func contains(_ other: Point) -> Bool {
+        
+    }
+    
+    func contains(_ other: Shape) -> Bool {
+        
+    }
+}
+
+let shape = Shape()
+shape.contains(Point())
+shape.contains(Shape())
+
+struct Box {
+    private let rawValue: Int
+    init(_ rawValue: Int) {
+        self.rawValue = rawValue
+    }
+    
+    func value() -> Int? {
+        rawValue
+    }
+    
+    func value() -> String? {
+        "\(rawValue)"
+    }
+}
+
+let myBox = Box(100)
+
+myBox.value() as Int?
+myBox.value() as String?
+
+let intBoxValue: Int? = myBox.value()
