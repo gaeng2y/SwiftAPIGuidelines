@@ -140,21 +140,21 @@ unsortedArray.sorted() // nonmutating
 unsortedArray.sort() // mutating
 
 struct Distance {
-    func distance(to otherDistance: Distance) -> Int {
-        return self.value - otherDistance.value
-    }
+//    func distance(to otherDistance: Distance) -> Int {
+//        return self.value - otherDistance.value
+//    }
 }
 
 var numberOfEmployees: Int {
     var result: Int = 0
     
-    (0 ... n).forEach {
-        (0 ... n).forEach {
-            (0 ... n).forEach {
-                result += 1
-            }
-        }
-    }
+//    (0 ... n).forEach {
+//        (0 ... n).forEach {
+//            (0 ... n).forEach {
+//                result += 1
+//            }
+//        }
+//    }
     
     return result
 }
@@ -165,13 +165,13 @@ class Company {
     var numberOfEmployees: Int {
         var result: Int = 0
         
-        (0 ... n).forEach {
-            (0 ... n).forEach {
-                (0 ... n).forEach {
-                    result += 1
-                }
-            }
-        }
+//        (0 ... n).forEach {
+//            (0 ... n).forEach {
+//                (0 ... n).forEach {
+//                    result += 1
+//                }
+//            }
+//        }
         
         return result
     }
@@ -185,17 +185,17 @@ var websiteURL: URL?
 var urlString: String?
 
 struct Shape {
-    func contains(_ other: Point) -> Bool {
-        
-    }
+//    func contains(_ other: Point) -> Bool {
+//
+//    }
     
-    func contains(_ other: Shape) -> Bool {
-        
-    }
+//    func contains(_ other: Shape) -> Bool {
+//        
+//    }
 }
 
 let shape = Shape()
-shape.contains(Point())
+//shape.contains(Point())
 shape.contains(Shape())
 
 struct Box {
