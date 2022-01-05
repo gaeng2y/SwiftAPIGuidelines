@@ -225,3 +225,36 @@ func move(from start: Point, to end: Point) {
 }
 
 move(from: a, to: b)
+
+extension String {
+    func comapare(_ other: String, option: CompareOptions = []) {
+        
+    }
+}
+
+
+public func compare(
+    options: CompareOptions = [],
+    range: Range? = nil,
+    locale: Locale? = nil,
+    _ other: String) {
+    
+    }
+
+// 위보다는 아래가 났다
+
+public func compare(,
+    _ other: String
+    options: CompareOptions = [],
+    range: Range? = nil,
+    locale: Locale? = nil) {
+        
+    }
+
+// 어떤 길이를 가진 박스를 제거하고 싶을 때
+x.removeBoxes(havingLenght: 12)
+
+func removeBoxes(havingLength length: Int) {
+    
+}
+

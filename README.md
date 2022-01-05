@@ -458,3 +458,44 @@ extension UInt32 {
   init(saturating valueToApproximate: UInt64)
 }
 ```
+
+### 첫 번째 argument가 전치사구의 일부일 때, argument label로 지정합니다.
+
+argument label은 보동 전치사로 시작합니다. eg. `x.removeBoxes(havingLengh: 12)`
+
+처음에 나오는 2개의 argument들이 단일 추상화를 표현하는 경우는 예외입니다.
+```swift
+// Bad
+a.move(toX: b, y: c)
+a.fade(fromRed: b, green: c, blue: d)
+```
+
+이런 경우, 추상화를 명확하기 위해 전치사 뒤에 argument label을 시작합니다.
+```swift
+// Good
+a.moveTo(x: b, y: c)
+a.fadeFrom(red: b, green: c, blue: d)
+```
+
+### 만약 첫번째 argument가 문법적 구절을 만든다면 label은 제거하고, 함수 이름에 base name을 추가합니다.
+
+eg. `x.addSubview(x)`
+
+이 가이드라인은 첫번째 argument가 문법적으로 구절을 만들지 않는다면, label을 둬야한다는 것을 암시합니다.
+
+```swift
+// Good
+view.dismiss(animated: false)
+let text = words.split(maxSplits: 12)
+let studentsByName = students.sorted(isOrderedBefore: Student.namePrecedes)
+```
+
+구절이 정확한 의미를 전달하는 것이 중요합니다. 다음 예시는 문법적이지만 모호한 표현을 하고 있습니다.
+```swift
+// Bad
+view.dismiss(false)   Don't dismiss? Dismiss a Bool?
+words.split(12)       Split the number 12?
+```
+
+### 나머지 모든 경우, arguemt들은 Label을 붙여야 합니다.
+ 
