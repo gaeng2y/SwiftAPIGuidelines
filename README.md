@@ -497,5 +497,7 @@ view.dismiss(false)   Don't dismiss? Dismiss a Bool?
 words.split(12)       Split the number 12?
 ```
 
+default value를 가진 argument는 생략될 수 있으며, 이 경우 문법 구문의 일부를 형성하지 않으므로 항상 레이블이 있어야 합니다.
+
 ### 나머지 모든 경우, arguemt들은 Label을 붙여야 합니다.
  
