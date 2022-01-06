@@ -225,7 +225,7 @@ let rgbForeground = RGBColor(cmykForeground)
 |`x = y.union(z)`|`y.formUnion(z)`|
 |`j = c.successor(i)`|`c.formSuccessor(&i)`|
 
-### nonmutating 한 변수나 메서드는 호출되는 객체에 대한 주장문처럼 읽혀야 한다
+### nonmutating인 Boolean 메소드와 프로퍼티는 호출되는 객체에 대한 주장문처럼 읽혀야 한다
 - 리시버와 불리언을 붙여서 쭉 말했을때 일반 문장처럼 들리게 하라
 eg. `x.isEmpty`, `line1.intersects(line2)`
 
