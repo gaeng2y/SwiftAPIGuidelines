@@ -258,3 +258,12 @@ func removeBoxes(havingLength length: Int) {
     
 }
 
+struct Storage {
+    func doSomething() -> (reallocated: Bool, capacityChanged: Bool) {
+        return (true, false)
+    }
+}
+
+let storage = Storage()
+let result = storage.doSomething()
+result.real
